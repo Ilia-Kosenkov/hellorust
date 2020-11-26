@@ -2,7 +2,14 @@ Package: hellorust
 Type: Package
 Title: Minimal Example of Calling Rust from R using Cargo
 Version: 0.2.0
-Author: Jeroen Ooms
+Authors@R: 
+    c(person(
+        given = "Jeroen",
+        family = "Ooms",
+        email = "jeroenooms@gmail.com",
+        role = c("aut", "cre")),
+    person(given = "Ilia",
+           role = "ctb"))
 Maintainer: Jeroen Ooms <jeroen@berkeley.edu>
 Description: Template of R package that calls out to rust via embedded
     Cargo package.
