@@ -1,8 +1,5 @@
 # Hello Rust
 
-[![Build Status](https://travis-ci.org/r-rust/hellorust.svg)](https://travis-ci.org/r-rust/hellorust)
-[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/r-rust/hellorust)](https://ci.appveyor.com/project/jeroen/hellorust)
-
 > Minimal Example of Calling Rust from R using Cargo
 
 Rust is a modern alternative to C and compiled rust code is ABI compatible with C. Many Rust libraries include C API headers so that the compiled rust code can be called from R/C/C++ as if it were C code.
@@ -29,7 +26,7 @@ hellorust
 │  |  └─ api.h               ← C headers for exported rust API
 |  |
 │  ├─ Makevars          ← Ties everything together
-│  └─ wrapper.c         ← C code for R package
+│  └─ wrapper.cpp       ← C++ code for Rcpp exports
 ├─ DESCRIPTION
 └─ R                    ← Standard R+C stuff
 ```
@@ -70,13 +67,11 @@ In order for rust to work with R you need to install the toolchain using `rustup
 rustup-init.exe -y --default-host x86_64-pc-windows-gnu
 ```
 
-To compile 32bit packages also add the i686 target:
+To compile 32bit packages also add the i686 target (or `INSTALL_opts = "--no-multiarch"`):
 
 ```
 rustup target add i686-pc-windows-gnu
 ```
-
-The [appveyor.yml](appveyor.yml) file shows this live in action. For more information about rust on Windows see [here](https://github.com/rust-lang-nursery/rustup.rs/blob/master/README.md#working-with-rust-on-windows).
 
 
 ## Resources
