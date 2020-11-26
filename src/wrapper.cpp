@@ -12,9 +12,9 @@
 extern "C" {
 #endif
 
-char * string_from_rust();
-int32_t random_number();
-void run_threads();
+char * string_from_rust_();
+int32_t random_number_();
+void run_threads_();
 
 #ifdef __cplusplus
 }
@@ -25,18 +25,18 @@ using namespace Rcpp;
 // Actual Wrappers
 
 // [[Rcpp::export]]
-SEXP hello_wrapper(){
-  return Rf_ScalarString(Rf_mkCharCE(string_from_rust(), CE_UTF8));
+SEXP hello(){
+  return Rf_ScalarString(Rf_mkCharCE(string_from_rust_(), CE_UTF8));
 }
 
 // [[Rcpp::export]]
-int32_t random_wrapper(){
-  return random_number();
+int32_t random_number(){
+  return random_number_();
 }
 
 // [[Rcpp::export]]
-void threads_wapper(){
-  run_threads();
+void run_threads(){
+  run_threads_();
 }
 
 // // Standard R package stuff

@@ -8,6 +8,6 @@ mod random;
 mod mythreads;
 
 // Export functions called by R
-pub use hello::string_from_rust;
-pub use random::random_number;
-pub use mythreads::run_threads;
+pub use hello::string_from_rust_;
+pub use random::random_number_;
+pub use mythreads::run_threads_;

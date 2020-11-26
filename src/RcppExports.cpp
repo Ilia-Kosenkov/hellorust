@@ -5,40 +5,40 @@
 
 using namespace Rcpp;
 
-// hello_wrapper
-SEXP hello_wrapper();
-RcppExport SEXP _hellorust_hello_wrapper() {
+// hello
+SEXP hello();
+RcppExport SEXP _hellorust_hello() {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    rcpp_result_gen = Rcpp::wrap(hello_wrapper());
+    rcpp_result_gen = Rcpp::wrap(hello());
     return rcpp_result_gen;
 END_RCPP
 }
-// random_wrapper
-int32_t random_wrapper();
-RcppExport SEXP _hellorust_random_wrapper() {
+// random_number
+int32_t random_number();
+RcppExport SEXP _hellorust_random_number() {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    rcpp_result_gen = Rcpp::wrap(random_wrapper());
+    rcpp_result_gen = Rcpp::wrap(random_number());
     return rcpp_result_gen;
 END_RCPP
 }
-// threads_wapper
-void threads_wapper();
-RcppExport SEXP _hellorust_threads_wapper() {
+// run_threads
+void run_threads();
+RcppExport SEXP _hellorust_run_threads() {
 BEGIN_RCPP
     Rcpp::RNGScope rcpp_rngScope_gen;
-    threads_wapper();
+    run_threads();
     return R_NilValue;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_hellorust_hello_wrapper", (DL_FUNC) &_hellorust_hello_wrapper, 0},
-    {"_hellorust_random_wrapper", (DL_FUNC) &_hellorust_random_wrapper, 0},
-    {"_hellorust_threads_wapper", (DL_FUNC) &_hellorust_threads_wapper, 0},
+    {"_hellorust_hello", (DL_FUNC) &_hellorust_hello, 0},
+    {"_hellorust_random_number", (DL_FUNC) &_hellorust_random_number, 0},
+    {"_hellorust_run_threads", (DL_FUNC) &_hellorust_run_threads, 0},
     {NULL, NULL, 0}
 };
 
