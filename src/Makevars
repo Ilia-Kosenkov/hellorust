@@ -1,13 +1,13 @@
-LIBDIR = rust_lib/target/release
-STATLIB = $(LIBDIR)/librust_lib.a
-PKG_LIBS = -L$(LIBDIR) -lrust_lib -lresolv
+LIBDIR = rust_code/target/release
+STATLIB = $(LIBDIR)/librust_code.a
+PKG_LIBS = -L$(LIBDIR) -lrust_code -lresolv
 
 all: clean
 
 $(SHLIB): $(STATLIB)
 
 $(STATLIB):
-	cargo build --release --manifest-path=rust_lib/Cargo.toml
+	cargo build --release --manifest-path=rust_code/Cargo.toml
 
 clean:
-	rm -Rf $(SHLIB) $(STATLIB) $(OBJECTS) rust_lib/target
+	rm -Rf $(SHLIB) $(STATLIB) $(OBJECTS) rust_code/target
