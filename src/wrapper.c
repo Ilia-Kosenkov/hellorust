@@ -3,7 +3,21 @@
 #include <Rinternals.h>
 
 // Import C headers for rust API
-#include "myrustlib/api.h"
+// #include "myrustlib/api.h"
+
+#include <stdint.h>
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+char * string_from_rust();
+int32_t random_number();
+void run_threads();
+
+#ifdef __cplusplus
+}
+#endif
 
 // Actual Wrappers
 SEXP hello_wrapper(){
