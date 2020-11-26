@@ -45,12 +45,12 @@ jobs:
         
       - name: Build & Check package
         run: |
-          R CMD build . && R CMD check ./hellorust*gz
+          R CMD build . && R CMD check ./*gz
         
       - uses: actions/upload-artifact@v2.2.1
         with: 
           name: Package
-          path: ./primitiveR*gz
+          path: ./*gz
         
 
 
