@@ -1,0 +1,52 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+#
+# See https://github.com/r-lib/actions/tree/master/examples#readme for
+# additional example workflows available for the R community.
+
+name: R
+
+on:
+  push:
+    branches: [ master ]
+    tags-ignore: 
+      - 'v*'
+  pull_request:
+    branches: [ master ]
+    tags-ignore: 
+      - 'v*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up R 4.0
+        uses: r-lib/actions/setup-r@v1
+        with:
+          r-version: 4.0.3
+      - name: Install TeX
+        # Expermental, probably takes a lot of space
+        run: sudo apt-get install texlive-latex-base texlive-fonts-recommended texlive-fonts-extra -y
+      - name: Install dependencies
+        run: |
+          Rscript -e "install.packages(c('rlang', 'vctrs', 'purrr', 'roxygen2', 'testthat', 'Rcpp', 'glue'))"
+                  
+      - name: Build metadata
+        run: |
+          Rscript -e "Rcpp::compileAttributes(); roxygen2::roxygenize()"
+        
+      - name: Build & Check package
+        run: |
+          R CMD build . && R CMD check ./primitiveR*gz
+        
+      - uses: actions/upload-artifact@v2.2.1
+        with: 
+          name: Package
+          path: ./primitiveR*gz
+        
+
+
